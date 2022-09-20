@@ -1,0 +1,32 @@
+import java.util.*;
+class HelloWorld{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        Random ran=new Random();
+        for(int i=0;i<n;i++){
+            int temp=ran.nextInt(n+1);
+            if(duplicates(arr,i,temp)){
+                arr[i]=temp;
+            }
+            else{
+                while(!duplicates(arr,i,temp)){
+                    temp=ran.nextInt(n+1);
+                }
+                arr[i]=temp;
+            }
+        }
+        for(int i=0;i<n;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+    public static boolean duplicates(int[] arr,int ind,int val){
+        for(int i=0;i<ind;i++){
+            if(arr[i]==val){
+                return false;
+            }
+        }
+        return true;
+    }
+}
